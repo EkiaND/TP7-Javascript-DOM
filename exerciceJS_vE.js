@@ -138,5 +138,5 @@ function mettreAJourResume() {
 
 // Ajout d'écouteurs d'événements sur chaque tâche
 document.querySelectorAll('ul li').forEach(tache => {
-  tache.addEventListener('click', gererTache); // Événement "click" pour gérer les tâches
+  tache.addEventListener('dblclick', gererTache); // Événement "dblclick" pour gérer les tâches
 });
