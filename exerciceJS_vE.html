@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM en Js</title>
+    <!-- Lien vers la feuille de style Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #monImage {
+            width: 300px;  /* Largeur initiale de l'image */
+            height: auto;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            font-size: 18px;
+            background-color: lightyellow;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+          }
+
+
+        .status {
+            margin-left: auto;
+            color: gray;
+        }
+
+        #resume {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Ligne 1 -->
+    <div class="row">
+        <div class="col text-center bg-light my-4">
+          <h2>Exercice1 - Changer d’Image et Opacité</h2>
+          <img id="monImage" src="images/jour.jpg" alt="Marrakech en jour">
+          <br><br>
+          <button>Changer d'image</button>
+          <button>Ajuster Opacité</button>
+
+        </div>
+        <div class="col bg-secondary text-center my-4">
+          <h2>Exercice 2: Suivi des Tâches</h2>
+          <ul>
+            <li>Tâche 1 <span class="status">En cours</span></li>
+            <li>Tâche 2 <span class="status">En cours</span></li>
+            <li>Tâche 3 <span class="status">En cours</span></li>
+            <li>Tâche 4 <span class="status">En cours</span></li>
+          </ul>
+
+          <p id="resume">Tâches terminées : 0 | Tâches en cours : 4</p>
+        </div>
+    </div>
+    <!-- Ligne 2 -->
+    <div class="row">
+        <div class="col cellule bg-warning my-4 py-4">
+          <h1>Exercice 3: Recherche de Pays</h1>
+          <form id="formPays">
+              <input type="text" id="nomPays" placeholder="Entrez un nom de pays">
+              <button type="button">Rechercher</button>
+          </form>
+          <p id="resultatPays"></p>
+
+
+        </div>
+    </div>
+
+<script src="exerciceJS_vE.js"></script>
+</body>
+</html>
