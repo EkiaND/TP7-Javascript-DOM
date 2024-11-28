@@ -65,16 +65,16 @@ let currentOpacity = 1; // Opacité initiale de l'image (100 %)
 // Fonction pour changer l'image entre "jour" et "nuit"
 function changerImage() {
   const image = document.getElementById('monImage'); // Sélectionne l'image
-  if (isJour) {
+  
+  // Vérifie la source actuelle et alterne en fonction
+  if (image.src.includes("jour.jpg")) {
     image.src = "images/nuit.jpg"; // Change l'image en "nuit"
     image.alt = "Marrakech en nuit"; // Met à jour l'attribut alt
   } else {
     image.src = "images/jour.jpg"; // Change l'image en "jour"
     image.alt = "Marrakech en jour"; // Met à jour l'attribut alt
   }
-  isJour = !isJour; // Alterne l'état de l'image
 }
-
 // Fonction pour ajuster l'opacité
 function ajusterOpacite() {
   const image = document.getElementById('monImage'); // Sélectionne l'image

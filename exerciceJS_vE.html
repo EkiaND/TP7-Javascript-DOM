@@ -23,8 +23,7 @@
             margin: 5px 0;
             display: flex;
             align-items: center;
-          }
-
+        }
 
         .status {
             margin-left: auto;
@@ -36,8 +35,12 @@
             font-size: 16px;
             color: #333;
         }
+
+        .cellule {
+            background-color: blue; /* Fond bleu */
+            color: green; /* Texte vert */
+        }
     </style>
-    
 </head>
 <body>
 
@@ -50,7 +53,6 @@
           <br><br>
           <button id="changerImage">Changer d'image</button>
           <button id="ajusterOpacite">Ajuster Opacité</button>
-
         </div>
         <div class="col bg-secondary text-center my-4">
           <h2>Exercice 2: Suivi des Tâches</h2>
@@ -66,15 +68,13 @@
     </div>
     <!-- Ligne 2 -->
     <div class="row">
-        <div class="col cellule bg-warning my-4 py-4">
+        <div class="col cellule my-4 py-4">
           <h1>Exercice 3: Recherche de Pays</h1>
           <form id="formPays">
               <input type="text" id="nomPays" placeholder="Entrez un nom de pays">
               <button type="button">Rechercher</button>
           </form>
           <p id="resultatPays"></p>
-
-
         </div>
     </div>
 
