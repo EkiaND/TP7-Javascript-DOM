@@ -95,3 +95,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnAjusterOpacite = document.getElementById('ajusterOpacite');
   btnAjusterOpacite.addEventListener('click', ajusterOpacite);
 });
+
+
+// Fonction pour gérer l'état d'une tâche
+function gererTache(event) {
+  const tache = event.target; // Récupère l'élément cliqué
+
+  // Vérifie l'état actuel et alterne
+  if (tache.querySelector('.status').textContent === "En cours") {
+      tache.style.backgroundColor = "green"; // Arrière-plan vert
+      tache.style.textDecoration = "line-through"; // Texte barré
+      tache.querySelector('.status').textContent = "Terminée"; // Met à jour le texte de statut
+  } else {
+      tache.style.backgroundColor = "yellow"; // Arrière-plan jaune
+      tache.style.textDecoration = "none"; // Supprime le barré
+      tache.querySelector('.status').textContent = "En cours"; // Met à jour le texte de statut
+  }
+
+  // Mettre à jour le résumé des tâches
+  mettreAJourResume();
+}
+
+// Fonction pour mettre à jour le résumé des tâches
+function mettreAJourResume() {
+  const taches = document.querySelectorAll('ul li'); // Sélectionne toutes les tâches
+  let terminees = 0;
+  let enCours = 0;
+
+  // Compte les tâches terminées et en cours
+  taches.forEach(tache => {
+      if (tache.querySelector('.status').textContent === "Terminée") {
+          terminees++;
+      } else {
+          enCours++;
+      }
+  });
+
+  // Met à jour l'élément du résumé
+  const resume = document.getElementById('resume');
+  resume.textContent = `Tâches terminées : ${terminees} | Tâches en cours : ${enCours}`;
+}
+
+// Ajout d'écouteurs d'événements sur chaque tâche
+document.querySelectorAll('ul li').forEach(tache => {
+  tache.addEventListener('click', gererTache); // Événement "click" pour gérer les tâches
+});
