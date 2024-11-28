@@ -58,79 +58,40 @@ function getInfosPays() {
 // Ajout d'un événement au bouton "Rechercher"
 document.querySelector('#formPays button').addEventListener('click', getInfosPays);
 
-
-getInfosFrance();
-
 // Variable globale pour gérer l'état de l'image
-let isJour = true;
-let currentOpacity = 1; // Opacité initiale (100 %)
+let isJour = true; // Définit si l'image est en mode "jour"
+let currentOpacity = 1; // Opacité initiale de l'image (100 %)
 
-// Fonction pour changer d'image
+// Fonction pour changer l'image entre "jour" et "nuit"
 function changerImage() {
-  const image = document.getElementById('monImage');
+  const image = document.getElementById('monImage'); // Sélectionne l'image
   if (isJour) {
-      image.src = "images/nuit.jpg";
-      image.alt = "Marrakech en nuit";
+    image.src = "images/nuit.jpg"; // Change l'image en "nuit"
+    image.alt = "Marrakech en nuit"; // Met à jour l'attribut alt
   } else {
-      image.src = "images/jour.jpg";
-      image.alt = "Marrakech en jour";
+    image.src = "images/jour.jpg"; // Change l'image en "jour"
+    image.alt = "Marrakech en jour"; // Met à jour l'attribut alt
   }
-  isJour = !isJour; // Alterner entre jour et nuit
+  isJour = !isJour; // Alterne l'état de l'image
 }
-
-document.querySelector('button:nth-of-type(1)').addEventListener('click', changerImage);
 
 // Fonction pour ajuster l'opacité
 function ajusterOpacite() {
-  const image = document.getElementById('monImage');
-  currentOpacity -= 0.25; // Réduire l'opacité par paliers de 25 %
+  const image = document.getElementById('monImage'); // Sélectionne l'image
+  currentOpacity -= 0.25; // Réduit l'opacité par paliers de 25 %
   if (currentOpacity < 0.25) {
-      currentOpacity = 1; // Réinitialiser à 100 % si elle atteint 25 %
+    currentOpacity = 1; // Réinitialise l'opacité à 100 % si elle atteint 25 %
   }
-  image.style.opacity = currentOpacity;
+  image.style.opacity = currentOpacity; // Applique la nouvelle opacité
 }
 
-document.querySelector('button:nth-of-type(2)').addEventListener('click', ajusterOpacite);
+// Ajouter des gestionnaires d'événements aux boutons
+document.addEventListener('DOMContentLoaded', () => {
+  // Bouton "Changer d'image"
+  const btnChangerImage = document.getElementById('changerImage');
+  btnChangerImage.addEventListener('click', changerImage);
 
-function gererTache(action, indice) {
-  const tache = document.querySelectorAll('ul li')[indice];
-  if (action === 'clic') {
-      // Passer la tâche à "Terminée"
-      tache.style.backgroundColor = "green";
-      tache.style.textDecoration = "line-through";
-      tache.querySelector('.status').textContent = "Terminée";
-  } else if (action === 'doubleClic') {
-      // Repasser la tâche à "En cours"
-      tache.style.backgroundColor = "yellow";
-      tache.style.textDecoration = "none";
-      tache.querySelector('.status').textContent = "En cours";
-  }
-  mettreAJourResume(); // Mettre à jour le résumé
-}
-
-
-
-// Fonction pour mettre à jour le résumé des tâches
-function mettreAJourResume() {
-  const taches = document.querySelectorAll('ul li');
-  let terminees = 0;
-  let enCours = 0;
-
-  taches.forEach(tache => {
-      const status = tache.querySelector('.status').textContent;
-      if (status === "Terminée") {
-          terminees++;
-      } else {
-          enCours++;
-      }
-  });
-
-  const resume = document.getElementById('resume');
-  resume.textContent = `Tâches terminées : ${terminees} | Tâches en cours : ${enCours}`;
-}
-
-// Ajout des gestionnaires d'événements pour chaque tâche
-document.querySelectorAll('ul li').forEach((tache, indice) => {
-  tache.addEventListener('click', () => gererTache('clic', indice));
-  tache.addEventListener('dblclick', () => gererTache('doubleClic', indice));
+  // Bouton "Ajuster Opacité"
+  const btnAjusterOpacite = document.getElementById('ajusterOpacite');
+  btnAjusterOpacite.addEventListener('click', ajusterOpacite);
 });
